@@ -28,7 +28,7 @@ def run():
 def check_and_block(ip_list):
     block_list = []
     max_failed = float(config_reader.get_setting("General", "max failed login"))
-    for ip, amount in ip_list:
+    for ip, amount in ip_list.iteritems():
         if amount > max_failed:
             block_list.append(ip)
     block_all_ips(block_list)
