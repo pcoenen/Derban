@@ -1,5 +1,6 @@
 import os
 
+
 def ips_ssh_login_fails(since_time):
     result = {}
     stream = os.popen("journalctl -u sshd -a --no-pager --since='" + since_time + "'")
@@ -11,6 +12,7 @@ def ips_ssh_login_fails(since_time):
             result[ip] = dict.get(ip, 0) + 1
         line = stream.readline()
     return result
+
 
 def ips_mail_login_fails(since_time):
     result = {}
