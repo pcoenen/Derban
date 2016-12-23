@@ -19,7 +19,7 @@ def run():
     last_check_time = time.strftime("%Y-%m-%d") + " 00:00:00"
     wait_time = float(config_reader.get_setting("General", "frequency"))
     while True:
-        new_time = time.strftime("%d-%m-%Y %H:%M:%S")
+        new_time = time.strftime("%Y-%m-%d %H:%M:%S")
         print collect_ips(last_check_time)
         time.sleep(wait_time)
         last_check_time = new_time
