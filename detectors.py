@@ -9,7 +9,7 @@ def ips_ssh_login_fails(since_time):
         if "Failed password for" in line:
             ip = line.split("from ", 1)[1]
             ip = ip.split(" ", 1)[0]
-            result[ip] = dict.get(ip, 0) + 1
+            result[ip] = result.get(ip, 0) + 1
         line = stream.readline()
     return result
 
@@ -21,6 +21,6 @@ def ips_mail_login_fails(since_time):
     while line != "":
         if "Password mismatch" in line:
             ip = line.split(",")[1]
-            result[ip] = dict.get(ip, 0) + 1
+            result[ip] = result.get(ip, 0) + 1
         line = stream.readline()
     return result
