@@ -23,3 +23,4 @@ def ips_mail_login_fails(since_time):
             ip = line.split(",")[1]
             result[ip] = dict.get(ip, 0) + 1
         line = stream.readline()
+    return result

@@ -1,7 +1,6 @@
 import os
 import config_reader
 import detectors
-import datetime
 import time
 from collections import Counter
 
@@ -16,10 +15,11 @@ def initialize():
 
 
 def run():
-    last_check_time = datetime.datetime.now().time()
+    # When the algo starts check every ip from that day
+    last_check_time = time.strftime("%Y-%m-%d") + " 00:00:00"
     wait_time = float(config_reader.get_setting("General", "frequency"))
     while True:
-        new_time = datetime.datetime.now().time()
+        new_time = time.strftime("%d-%m-%Y %H:%M:%S")
         print collect_ips(last_check_time)
         time.sleep(wait_time)
         last_check_time = new_time
