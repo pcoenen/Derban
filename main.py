@@ -20,9 +20,24 @@ def run():
     wait_time = float(config_reader.get_setting("General", "frequency"))
     while True:
         new_time = time.strftime("%Y-%m-%d %H:%M:%S")
-        print collect_ips(last_check_time)
+        check_and_block(collect_ips(last_check_time))
         time.sleep(wait_time)
         last_check_time = new_time
+
+
+def check_and_block(ip_list):
+    block_list = []
+    max_failed = float(config_reader.get_setting("General", "max failed login"))
+    for ip, amount in ip_list:
+        if amount > max_failed:
+            block_list.append(ip)
+    block_all_ips(block_list)
+
+
+def block_all_ips(ip_list):
+    for ip in ip_list:
+        block_ip(ip)
+        print "Blocked" + ip
 
 
 def collect_ips(check_time):
