@@ -3,7 +3,7 @@ import subprocess
 
 def block_ip(ip):
     output = subprocess.check_output("firewall-cmd --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
-    if(output == "success" or "Warning: ALREADY_ENABLED" in output):
+    if("success" in output or "Warning: ALREADY_ENABLED" in output):
         return True
     print output
     return False
