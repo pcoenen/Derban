@@ -36,7 +36,6 @@ def remove_all_permanent():
     stream = os.popen("firewall-cmd --list-all")
     line = stream.readline()
     while line != "":
-        print line
         p = re.compile(".* rule family=\"ipv4\" source address=\"(.*)\" reject .*")
         result = p.search(line)
         if(result) :
