@@ -42,4 +42,4 @@ def remove_all_permanent():
             if permanent_deblock_ip(ip):
                 count += 1
         line = stream.readline()
-    print "Deblocked " + count + "ip's"
+    print "Deblocked " + str(count) + "ip's"
