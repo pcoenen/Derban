@@ -42,6 +42,8 @@ def remove_all_permanent():
             ip = result.group(1)
             if permanent_deblock_ip(ip):
                 count += 1
+                if count % 1000 == 0 :
+                    print "Already " + str(count) + "blocks removed"
             line = stream.readline()
     print "Deblocked " + str(count) + " ip's"
     restart()
