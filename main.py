@@ -36,7 +36,7 @@ def deblock_ips():
             return
         else :
             firewallD.deblock_ip(ip)
-            blocked_ip_list.pop(1)
+            blocked_ip_list.remove([ip, time_blocked])
 
 
 def check_and_block():
