@@ -12,7 +12,7 @@ def main():
 
 
 def initialize():
-    return
+    firewallD.remove_all_permanent()
 
 
 def run():
