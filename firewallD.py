@@ -36,8 +36,7 @@ def remove_all_permanent():
     stream = os.popen("firewall-cmd --list-all")
     line = stream.readline()
     while line != "":
-        print line
-        matchObj = re.match(r'rule family=\"ipv4\" source address=\"(.*)\" reject', line, re.M | re.I)
+        matchObj = re.match(r'.* rule family=\"ipv4\" source address=\"(.*)\" reject .*', line, re.M | re.I)
         if matchObj:
             ip = matchObj.group(1)
             if permanent_deblock_ip(ip):
