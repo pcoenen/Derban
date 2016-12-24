@@ -39,8 +39,9 @@ def remove_all_permanent():
         print line
         p = re.compile(".* rule family=\"ipv4\" source address=\"(.*)\" reject .*")
         result = p.search(line)
-        ip = result.group(1)
-        if permanent_deblock_ip(ip):
-            count += 1
-        line = stream.readline()
+        if(result) :
+            ip = result.group(1)
+            if permanent_deblock_ip(ip):
+                count += 1
+            line = stream.readline()
     print "Deblocked " + str(count) + " ip's"
