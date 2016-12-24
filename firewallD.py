@@ -2,7 +2,13 @@ import subprocess
 
 
 def block_ip(ip):
-    output = subprocess.check_output("firewall-cmd --permanent --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
+    output = subprocess.check_output("firewall-cmd --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
+    if(output == "success"):
+        return True
+    return False
+
+def deblock_ip(ip):
+    output = subprocess.check_output("firewall-cmd --remove-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
     if(output == "success"):
         return True
     return False

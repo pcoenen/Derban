@@ -20,9 +20,10 @@ def get_setting(section,option):
 
 def get_bool_setting(section,option):
     result = get_setting(section, option)
-    if result is not None and result.lower() == "true":
+    if result is not None and (result.lower() == "true" or result.lower() == "1"):
         return True
     return False
 
 detection_methods = {'SSH' : "true"}
-standard_settings = {'Detection Methods' : detection_methods}
+general = {'frequency' : '1', 'block time' : '86400', 'max failed login' : '20'}
+standard_settings = {'Detection Methods' : detection_methods, 'General' : general}
