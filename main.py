@@ -16,7 +16,6 @@ def initialize():
 
 
 def run():
-    global ip_fail_counter
     # When the algo starts check every ip from that day
     last_check_time = time.strftime("%Y-%m-%d") + " 00:00:00"
     wait_time = float(config_reader.get_setting("General", "frequency"))
@@ -42,6 +41,7 @@ def deblock_ips():
 
 def check_and_block():
     global ip_fail_counter
+    print ip_fail_counter
     block_list = []
     max_failed = float(config_reader.get_setting("General", "max failed login"))
     for ip, amount in ip_fail_counter.iteritems():
@@ -52,11 +52,14 @@ def check_and_block():
 
 def block_all_ips(ip_list):
     global blocked_ip_list
+    global ip_fail_counter
     for ip in ip_list:
         if firewallD.block_ip(ip) :
             blocked_ip_list.append([ip,datetime.datetime.now()])
             del ip_fail_counter[ip]
             print "Blocked " + ip
+        else :
+            print "Failed to block"
 
 
 def collect_ips(check_time):
