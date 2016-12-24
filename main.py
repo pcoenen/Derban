@@ -1,4 +1,4 @@
-import os
+import firewallD
 import config_reader
 import detectors
 import time
@@ -36,8 +36,9 @@ def check_and_block(ip_list):
 
 def block_all_ips(ip_list):
     for ip in ip_list:
-        block_ip(ip)
-        print "Blocked" + ip
+        firewallD.block_ip(ip)
+        print "Blocked " + ip
+    firewallD.restart()
 
 
 def collect_ips(check_time):
@@ -49,10 +50,6 @@ def collect_ips(check_time):
         dovecot_ips = detectors.ips_mail_login_fails(check_time)
         collected.append(dovecot_ips)
     return sum((Counter(dict(x)) for x in collected), Counter())
-
-
-def block_ip(ip):
-    os.system("firewall-cmd --permanent --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"")
 
 if __name__ == "__main__":
     main()
