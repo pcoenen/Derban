@@ -1,5 +1,6 @@
 #!/bin/bash
 
+systemctl stop derban.service
 chmod +x *
 yes | cp -rf ../source /etc/derban
 yes | cp -rf derban.sh /usr/bin/derban.sh
