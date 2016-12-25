@@ -38,11 +38,12 @@ def deblock_ips():
         else :
             firewallD.deblock_ip(ip)
             blocked_ip_list.remove([ip, time_blocked])
+            print "Deblocked " + ip
+            sys.stdout.flush()
 
 
 def check_and_block():
     global ip_fail_counter
-    print ip_fail_counter
     block_list = []
     max_failed = float(config_reader.get_setting("General", "max failed login"))
     for ip, amount in ip_fail_counter.iteritems():
@@ -62,6 +63,7 @@ def block_all_ips(ip_list):
             sys.stdout.flush()
         else :
             print "Failed to block"
+            sys.stdout.flush()
 
 
 def collect_ips(check_time):
