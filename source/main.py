@@ -25,7 +25,7 @@ def run():
     sys.stdout.flush()
     # When the algo starts check every ip from that day
     last_check_time = time.strftime("%Y-%m-%d") + " 00:00:00"
-    wait_time = float(config_reader.get_setting("General", "frequency"))
+    wait_time = int(config_reader.get_setting("General", "frequency"))
     while True:
         new_time = time.strftime("%Y-%m-%d %H:%M:%S")
         collect_ips(last_check_time)
@@ -42,10 +42,10 @@ def deblock_ips():
         if time_blocked + block_time > datetime.datetime.now():
             return
         else :
-            firewallD.deblock_ip(ip)
-            blocked_ip_list.remove([ip, time_blocked])
-            print "Deblocked " + ip
-            sys.stdout.flush()
+            if firewallD.deblock_ip(ip) :
+                blocked_ip_list.remove([ip, time_blocked])
+                print "Deblocked " + ip
+                sys.stdout.flush()
 
 
 def check_and_block():
