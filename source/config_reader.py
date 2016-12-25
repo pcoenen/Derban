@@ -4,7 +4,7 @@ import sys
 Config = ConfigParser.ConfigParser()
 
 
-if not Config.read("settings.ini"):
+if not Config.read("/etc/derban/settings.ini"):
     sys.exit("Settingsfile 'settings.ini' is missing, create file 'settings.ini'")
 
 
