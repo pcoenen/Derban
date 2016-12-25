@@ -39,7 +39,7 @@ def deblock_ips():
     global blocked_ip_list
     block_time = datetime.timedelta(seconds= int(config_reader.get_setting("General", "block time")))
     for [ip, time_blocked] in blocked_ip_list:
-        if time_blocked + block_time < datetime.datetime.now():
+        if time_blocked + block_time > datetime.datetime.now():
             return
         else :
             firewallD.deblock_ip(ip)
