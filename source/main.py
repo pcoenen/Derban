@@ -8,7 +8,11 @@ import sys
 
 
 def main():
+    print "Starting Derban version 2.0"
+    sys.stdout.flush()
     initialize()
+    print "Initializing"
+    sys.stdout.flush()
     run()
 
 
@@ -17,6 +21,8 @@ def initialize():
 
 
 def run():
+    print "Derban is up and running"
+    sys.stdout.flush()
     # When the algo starts check every ip from that day
     last_check_time = time.strftime("%Y-%m-%d") + " 00:00:00"
     wait_time = float(config_reader.get_setting("General", "frequency"))
