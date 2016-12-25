@@ -34,6 +34,7 @@ def restart():
 def remove_all_permanent():
     print "Al permanent blocked ip's will be removed"
     print "Be patient this can take really long (in some cases some hours)"
+    sys.stdout.flush()
     count = 0
     stream = os.popen("firewall-cmd --list-all")
     line = stream.readline().strip()

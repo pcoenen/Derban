@@ -4,6 +4,7 @@ import detectors
 import time
 from collections import Counter
 import datetime
+import sys
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
 
 
 def initialize():
-    firewallD.remove_all_permanent()
+    return
 
 
 def run():
@@ -58,6 +59,7 @@ def block_all_ips(ip_list):
             blocked_ip_list.append([ip,datetime.datetime.now()])
             del ip_fail_counter[ip]
             print "Blocked " + ip
+            sys.stdout.flush()
         else :
             print "Failed to block"
 
