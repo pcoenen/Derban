@@ -1,0 +1,9 @@
+[Unit]
+Description=Derban
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/derban.sh
+
+[Install]
+WantedBy=multi-user.target
