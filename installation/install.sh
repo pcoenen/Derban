@@ -1,10 +1,11 @@
 #!/bin/bash
 
 chmod +x *
-cp -rf ../source /etc/derban
-cp -f derban.sh /usr/bin/derban.sh
-cp -f derban.service /lib/systemd/system/derban.service
-ln -s -f /lib/systemd/system/derban.service /etc/systemd/system/derban.service
+yes | cp -rf ../source /etc/derban
+yes | cp -rf derban.sh /usr/bin/derban.sh
+yes | cp -rf derban.service /lib/systemd/system/derban.service
+rm -rf /etc/systemd/system/derban.service
+ln -s /lib/systemd/system/derban.service /etc/systemd/system/derban.service
 
 
 systemctl daemon-reload
