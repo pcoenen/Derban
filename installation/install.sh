@@ -6,6 +6,5 @@ cp derban.service /lib/systemd/system/derban.service
 ln -s /lib/systemd/system/derban.service /etc/systemd/system/derban.service
 
 
-systemctl daemon-reload
 systemctl enable derban.service
 systemctl start derban.service
