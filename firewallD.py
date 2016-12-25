@@ -34,16 +34,14 @@ def restart():
 def remove_all_permanent():
     count = 0
     stream = os.popen("firewall-cmd --list-all")
-    line = stream.readline()
+    line = stream.readline().strip()
     while line != "":
-        p = re.compile(".* rule family=\"ipv4\" source address=\"(.*)\" reject .*")
+        p = re.compile("rule family=\"ipv4\" source address=\"(.*)\" reject")
         result = p.search(line)
-        if(result) :
+        if result :
             ip = result.group(1)
             if permanent_deblock_ip(ip):
                 count += 1
-                if count % 1000 == 0 :
-                    print "Already " + str(count) + "blocks removed"
-            line = stream.readline()
+        line = stream.readline().strip()
     print "Deblocked " + str(count) + " ip's"
-    restart()
+    #restart()
