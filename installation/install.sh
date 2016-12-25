@@ -2,9 +2,12 @@
 
 systemctl stop derban.service
 chmod +x *
-yes | cp -rf ../source /etc/derban
-yes | cp -rf derban.sh /usr/bin/derban.sh
-yes | cp -rf derban.service /lib/systemd/system/derban.service
+rm -rf /etc/derban
+cp -r ../source /etc/derban
+rm -rf /usr/bin/derban.sh
+cp derban.sh /usr/bin/derban.sh
+rm -rf /lib/systemd/system/derban.service
+cp derban.service /lib/systemd/system/derban.service
 rm -rf /etc/systemd/system/derban.service
 ln -s /lib/systemd/system/derban.service /etc/systemd/system/derban.service
 
