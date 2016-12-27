@@ -20,7 +20,7 @@ $ systemctl status derban
 
 You can configurate the service by changing /etc/derban/settings.ini
 
-```bash
+```
 [General]
 frequency : 1
 max failed login : 5
@@ -31,7 +31,7 @@ SSH : true
 dovecot : true
 ```
 
-These are the standardsettings
+More information about these settings:
 * **frequency** : the response time of the script in seconds, it is advised to check for failed logins every second
 * **max failed login** : the amount of failed logins that are allowed for one ip adress
 * **block time** : the time in seconds that an ip adress needs to be blocked, generaly 86400 seconds (one day)
