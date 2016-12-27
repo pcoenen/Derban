@@ -10,9 +10,9 @@ import sys
 def main():
     print "Starting Derban version 2.0"
     sys.stdout.flush()
-    initialize()
-    print "Initializing"
+    print "Initializing..."
     sys.stdout.flush()
+    initialize()
     run()
 
 
@@ -67,8 +67,8 @@ def block_all_ips(ip_list):
             del ip_fail_counter[ip]
             print "Blocked " + ip
             sys.stdout.flush()
-        else :
-            print "Failed to block"
+        else:
+            print "Failed to block " + ip
             sys.stdout.flush()
 
 
