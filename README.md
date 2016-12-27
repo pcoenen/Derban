@@ -1,6 +1,6 @@
 # Derban
 
-### Installation
+## Installation
 
 Derban can be installed easly by cloning this repository and running the following commands
 
@@ -16,7 +16,7 @@ You can check if the service is running using the following command
 $ systemctl status derban
 ```
 
-###Configuration
+##Configuration
 
 You can configurate the service by changing /etc/derban/settings.ini
 
