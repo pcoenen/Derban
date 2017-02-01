@@ -5,14 +5,14 @@ import sys
 
 
 def block_ip(ip):
-    output = subprocess.check_output("firewall-cmd --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
-    if("success" in output or "Warning: ALREADY_ENABLED" in output):
+    output = subprocess.check_output("firewall-cmd --add-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True).strip()
+    if("success" == output or "Warning: ALREADY_ENABLED" == output):
         return True
     return False
 
 def deblock_ip(ip):
-    output = subprocess.check_output("firewall-cmd --remove-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True)
-    if(output == "success"):
+    output = subprocess.check_output("firewall-cmd --remove-rich-rule=\"rule family='ipv4' source address='" + ip + "' reject\"", shell=True).strip()
+    if("success" == output):
         return True
     return False
 
